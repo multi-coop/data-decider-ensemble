@@ -1,0 +1,115 @@
+{
+  "fields": [
+    {
+      "name": "TITRE DU PROJET",
+      "sticky": true,
+      "primaryKey": true
+    },
+    {
+      "name": "PORTEUR DE PROJET - EXTENSIF",
+      "subtype": "longtext",
+      "maxLength": 50
+    },
+    {
+      "name": "À RETENIR",
+      "subtype": "longtext",
+      "maxLength": 50
+    },
+    {
+      "name": "PRÉSENTATION DU PROJET",
+      "subtype": "longtext",
+      "maxLength": 50
+    },
+
+    {
+      "name": "LOGO URL",
+      "subtype": "image"
+    },
+
+    {
+      "name": "FILTRE 1 - TYPE DE PORTEUR DE PROJET",
+      "subtype": "tags",
+      "separator": "-"
+    },
+    {
+      "name": "CODE PORTEUR DE PROJET",
+      "subtype": "tags",
+      "separator": "-"
+    },
+
+    {
+      "name": "FILTRE 2 - TYPE DE DEMARCHE",
+      "subtype": "tags",
+      "separator": "-"
+    },
+    {
+      "name": "CODE DEMARCHE",
+      "subtype": "tags",
+      "separator": "-"
+    },
+
+    {
+      "name": "FILTRE 3 - THÉMATIQUE PRINCIPALE",
+      "subtype": "tags",
+      "separator": "-"
+    },
+    {
+      "name": "CODE THEMATIQUE",
+      "subtype": "tags",
+      "separator": "-"
+    },
+
+    {
+      "name": "SITE WEB",
+      "subtype": "link"
+    },
+    {
+      "name": "LIEN PDF PROTEGE",
+      "title": "URL du logo du lieu",
+      "subtype": "link"
+    },
+
+    {
+      "name": "adresse_postale",
+      "subtype": "longtext",
+      "maxLength": 20
+    },
+
+    {
+      "name": "latitude",
+      "subtype": "geopoint"
+    },
+    {
+      "name": "longitude",
+      "subtype": "geopoint"
+    }
+  ],
+  "consolidation": [
+    {
+      "api_name": "adresse.gouv.fr",
+      "source_fields": [
+        { "name": "adresse_postale" }
+      ],
+      "activate": true,
+      "api": "api-ban",
+      "results_fields": [
+        { 
+          "resp_field" : "latitude",
+          "map_to_field": "Latitude"
+        },
+        { 
+          "resp_field" : "longitude",
+          "map_to_field": "Longitude"
+        }
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "api_name": "api-json-validation",
+      "api": "https://json.validator.validata.fr/validate",
+      "api_doc": "https://json.validator.validata.fr/apidocs",
+      "notes": "not implemented (yet)"
+    }
+  ]
+}

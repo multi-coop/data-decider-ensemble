@@ -1,0 +1,88 @@
+{
+  "fields": [
+    {
+      "name": "FILTRE 1 - TYPE DE PORTEUR DE PROJET",
+      "title": "Type de porteur",
+      "description": "Type de porteur",
+      "type": "string"
+    },
+    {
+      "name": "FILTRE 2 - TYPE DE DEMARCHE",
+      "title": "Type de démarche",
+      "description": "Type de démarche",
+      "type": "string"
+    },
+    {
+      "name": "FILTRE 3 - THÉMATIQUE PRINCIPALE",
+      "title": "Type de thématique",
+      "description": "Type de démarche",
+      "type": "string"
+    },
+    {
+      "name": "PRÉSENTATION DU PROJET",
+      "title": "Présentation du projet",
+      "description": "Paragraphe de présentation du projet",
+      "type": "string"
+    },
+    {
+      "name": "SITE WEB",
+      "title": "URL du site internet du lieu",
+      "type": "string",
+      "format": "uri"
+    },
+    {
+      "name": "LOGO URL",
+      "title": "URL du logo du porteur",
+      "type": "string",
+      "format": "uri"
+    },
+    {
+      "name": "LIEN PDF PROTEGE",
+      "title": "URL du logo du lieu",
+      "type": "string",
+      "format": "uri"
+    },
+    {
+      "name": "ADRESSE",
+      "type": "string"
+    },
+    {
+      "name": "DEPARTEMENT",
+      "type": "string"
+    },
+    {
+      "name": "SOURCE_codes",
+      "title": "Source des données",
+      "type": "string"
+    },
+    {
+      "name": "CONCAT_TYPO",
+      "title": "Typologie de lieu",
+      "type": "string"
+    },
+    {
+      "name": "PUBLICS",
+      "title": "Types de publics",
+      "type": "string"
+    },
+    {
+      "name": "TYPOLOGIE",
+      "title": "Typologie",
+      "type": "string"
+    },
+    {
+      "name": "DEPARTEMENT_NOM",
+      "title": "Département"
+    },
+    {
+      "name": "latitude",
+      "title": "Latitude du siège",
+      "type": "number"
+    },
+    {
+      "name": "longitude",
+      "title": "Longitude du siège",
+      "type": "number"
+    }
+  ]
+}
