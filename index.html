@@ -86,6 +86,10 @@
                   "adresse_postale": {
                     "position": "adress"
                   },
+                  "CODE THEMATIQUE": {
+                    "position": "tags",
+                    "block_title": "Thématique"
+                  },
                   "PRÉSENTATION DU PROJET": {
                     "position": "resume"
                   }
@@ -107,17 +111,17 @@
                     "position": "description",
                     "block_title": "Description"
                   },
-                  "FILTRE 1 - TYPE DE PORTEUR DE PROJET": {
+                  "CODE PORTEUR DE PROJET": {
                     "position": "tags",
                     "block_title": "Type de porteur",
                     "right": true
                   },
-                  "FILTRE 2 - TYPE DE DEMARCHE": {
+                  "CODE DEMARCHE": {
                     "position": "tags",
                     "block_title": "Type de démarche",
                     "right": true
                   },
-                  "FILTRE 3 - THÉMATIQUE PRINCIPALE": {
+                  "CODE THEMATIQUE": {
                     "position": "tags",
                     "block_title": "Type de thématique",
                     "right": true
@@ -125,10 +129,15 @@
                   "SITE WEB": {
                     "position": "links",
                     "block_title": "Lien vers le site du projet",
-                    "right": true
+                    "right": false
+                  },
+                  "LIEN PDF PROTEGE": {
+                    "position": "links",
+                    "block_title": "Lien vers le pdf",
+                    "right": false
                   },
                   "ÉTAPES": {
-                    "position": "steps",
+                    "position": "timeline",
                     "block_title": "Déroulé",
                     "right": true
                   }
@@ -159,8 +168,8 @@
                     "maxZoom": 18,
                     "minZoom": 2,
                     "item_geo_fields": {
-                      "latitude": "latitude",
-                      "longitude": "longitude"
+                      "latitude": "BAN_latitude",
+                      "longitude": "BAN_longitude"
                     },
                     "zoom_item": 13,
                     "marker_icon": "map-marker",

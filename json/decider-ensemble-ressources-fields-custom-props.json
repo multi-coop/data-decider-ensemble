@@ -47,6 +47,7 @@
       "name": "CODE PORTEUR DE PROJET",
       "subtype": "tags",
       "separator": "-",
+      "bgColor" : "#f6c131",
       "definitions": [
         {
           "value": "AC",
@@ -55,6 +56,10 @@
         {
           "value": "AE",
           "label" : "Administration d'Etat"
+        },
+        {
+          "value": "AUT",
+          "label": "Autre"
         },
         {
           "value": "DEP",
@@ -93,6 +98,7 @@
       "name": "CODE DEMARCHE",
       "subtype": "tags",
       "separator": "-",
+      "bgColor" : "#1a3a68",
       "definitions": [
         {
           "value": "AU",
@@ -135,6 +141,7 @@
       "name": "CODE THEMATIQUE",
       "subtype": "tags",
       "separator": "-",
+      "bgColor" : "#129461",
       "definitions": [
         {
           "value": "ACT",
@@ -189,11 +196,11 @@
       }
     },
     {
-      "name": "latitude",
+      "name": "BAN_latitude",
       "subtype": "geopoint"
     },
     {
-      "name": "longitude",
+      "name": "BAN_longitude",
       "subtype": "geopoint"
     }
   ],

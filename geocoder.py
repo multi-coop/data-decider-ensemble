@@ -13,6 +13,7 @@ parser.add_argument("src", help="Path to source dataset to geocode")
 parser.add_argument("-out", help="Path to source dataset to geocode", default="csv/geocoding")
 parser.add_argument("-adress", "--col_adress", type=str, help="Column name of the line/item full adress", default='adresse_full')
 parser.add_argument("-sep", "--separator", type=str, help="CSV separator",  default=',')
+parser.add_argument("-is_latlon", "--is_latitude_longitude", type=str, help="Existing Lat. and Lon. columns. If columns already exists keep the values from columnsand copy it into BAN_latitude and BAN_longitude", default=None)
 parser.add_argument("-debug", "--debug", type=bool, help="Debugging", default=False)
 
 args = parser.parse_args()
@@ -24,6 +25,14 @@ sep = args.separator
 
 col_adress = args.col_adress
 if debug: print("\n geocoder ... col_adress : ", col_adress)
+
+cols_is_latlon = args.is_latitude_longitude.split(',') if args.is_latitude_longitude else None
+if debug: print("\n geocoder ... cols_is_latlon : ", cols_is_latlon)
+if cols_is_latlon:
+  col_lat = cols_is_latlon[0]
+  col_lon = cols_is_latlon[1]
+  if debug: print(" geocoder ... col_lat : ", col_lat)
+  if debug: print(" geocoder ... col_lon : ", col_lon)
 
 srcFilename = os.path.basename(args.src)
 if debug: print("\n geocoder ... srcFilename : ", srcFilename)
@@ -49,10 +58,17 @@ for row in inputData:
   # Get index of adress column
   col_adress_idx = row.index(col_adress)
   if debug: print("\n geocoder ... col_adress_idx : ", col_adress_idx)
+  
+  if cols_is_latlon:
+    col_lat_idx = row.index(col_lat)
+    col_lon_idx = row.index(col_lon)
+    if debug: print("geocoder ... col_lat_idx : ", col_lat_idx)
+    if debug: print("geocoder ... col_lon_idx : ", col_lon_idx)
 
   new_cols = [
     *row,
-    'latitude', 'longitude',
+    'BAN_latitude',
+    'BAN_longitude',
     'BAN_adress',
     'BAN_adress_full',
     'BAN_city', 
@@ -78,6 +94,15 @@ try:
     adress = row[col_adress_idx]
     if debug: print("... adress : ", adress)
 
+    if cols_is_latlon:
+      row_lat = row[col_lat_idx]
+      row_lon = row[col_lon_idx]
+    else:
+      row_lat = ''
+      row_lon = ''
+    if debug: print("... row_lat : ", row_lat)
+    if debug: print("... row_lon : ", row_lon)
+
     try:
       location = geocoder.geocode(adress, exactly_one=True, timeout=30)
       if debug: print("... location : ", location)
@@ -87,26 +112,27 @@ try:
       props = location.raw['properties']
       if debug: print("... props : ", props)
       
-      lat = location.latitude
-      lon = location.longitude
+      BAN_lat = row_lat if cols_is_latlon and row_lat != '' else location.latitude
+      BAN_lon = row_lon if cols_is_latlon and row_lon != '' else location.longitude
+
       BAN_adress = props.get('name', '')
       BAN_adress_full = props.get('label', '')
       BAN_city = props.get('city', '')
       BAN_postcode = props.get('postcode', '')
       BAN_depcode = BAN_postcode[0:2] if BAN_postcode != '' else ''
-      if debug: print("... lat : ", lat)
-      if debug: print("... lon : ", lon)
+      if debug: print("... BAN_lat : ", BAN_lat)
+      if debug: print("... BAN_lon : ", BAN_lon)
       if debug: print("... BAN_adress : ", BAN_adress)
       if debug: print("... BAN_adress_full : ", BAN_adress_full)
       if debug: print("... BAN_city : ", BAN_city)
       if debug: print("... BAN_postcode : ", BAN_postcode)
       if debug: print("... BAN_depcode : ", BAN_depcode)
 
-      outputData.writerow((*row, lat, lon, BAN_adress, BAN_adress_full, BAN_city, BAN_postcode, BAN_depcode))
+      outputData.writerow((*row, BAN_lat, BAN_lon, BAN_adress, BAN_adress_full, BAN_city, BAN_postcode, BAN_depcode))
       rows_geocoded += 1
     except Exception as inst:
       print(inst)
-      outputData.writerow((*row, '', '', '', '', '', '', ''))
+      outputData.writerow((*row, row_lat, row_lon, '', '', '', '', ''))
       errors += 1
     counter += 1
 
