@@ -147,7 +147,7 @@
 
             "need_aggregation" : true,
             "polygon_prop_id" : "code",
-            "join_polygon_id_to_field"  : "CODE_POSTAL",
+            "join_polygon_id_to_field"  : "BAN_depcode",
             "agregated_data_field"      : "count_dep",
             "fill_color": [
               "interpolate",

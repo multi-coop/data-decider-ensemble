@@ -1,3 +1,4 @@
+import os
 import argparse
 import csv
 from geopy.geocoders import BANFrance
@@ -9,7 +10,7 @@ parser = argparse.ArgumentParser(description="Geocode a csv dataset",
 
 parser.add_argument("-v", "--verbose", action="store_true", help="increase verbosity")
 parser.add_argument("src", help="Path to source dataset to geocode")
-parser.add_argument("-out", help="Path to source dataset to geocode", default="csv/geocoding/geocoded.csv")
+parser.add_argument("-out", help="Path to source dataset to geocode", default="csv/geocoding")
 parser.add_argument("-adress", "--col_adress", type=str, help="Column name of the line/item full adress", default='adresse_full')
 parser.add_argument("-sep", "--separator", type=str, help="CSV separator",  default=',')
 parser.add_argument("-debug", "--debug", type=bool, help="Debugging", default=False)
@@ -24,8 +25,13 @@ sep = args.separator
 col_adress = args.col_adress
 if debug: print("\n geocoder ... col_adress : ", col_adress)
 
+srcFilename = os.path.basename(args.src)
+if debug: print("\n geocoder ... srcFilename : ", srcFilename)
+outFile = f'{args.out}/{os.path.splitext(srcFilename)[0]}-geocoded.csv'
+if debug: print("\n geocoder ... outFile : ", outFile)
+
 inputFile = open(args.src, 'r')
-outputFile = open(args.out, 'w')
+outputFile = open(outFile, 'w')
 if debug: print("\n geocoder ... args.out : ", args.out)
 
 inputData = csv.reader(inputFile, delimiter=sep)
@@ -44,12 +50,18 @@ for row in inputData:
   col_adress_idx = row.index(col_adress)
   if debug: print("\n geocoder ... col_adress_idx : ", col_adress_idx)
 
-  new_cols = [*row, 'latitude', 'longitude', 'BAN_adress', 'BAN_adress_full', 'BAN_city', 'BAN_postcode']
+  new_cols = [
+    *row,
+    'latitude', 'longitude',
+    'BAN_adress',
+    'BAN_adress_full',
+    'BAN_city', 
+    'BAN_postcode',
+    'BAN_depcode'
+    ]
   if debug: print("\n geocoder ... new_cols : ", new_cols)
 
   # Write first row of output
-  # outputData.writerow((*row, 'latitude', 'longitude'))
-  # outputData.writerow((*row, *new_cols))
   outputData.writerow(new_cols)
   break
 
@@ -81,18 +93,20 @@ try:
       BAN_adress_full = props.get('label', '')
       BAN_city = props.get('city', '')
       BAN_postcode = props.get('postcode', '')
+      BAN_depcode = BAN_postcode[0:2] if BAN_postcode != '' else ''
       if debug: print("... lat : ", lat)
       if debug: print("... lon : ", lon)
       if debug: print("... BAN_adress : ", BAN_adress)
       if debug: print("... BAN_adress_full : ", BAN_adress_full)
       if debug: print("... BAN_city : ", BAN_city)
       if debug: print("... BAN_postcode : ", BAN_postcode)
+      if debug: print("... BAN_depcode : ", BAN_depcode)
 
-      outputData.writerow((*row, lat, lon, BAN_adress, BAN_adress_full, BAN_city, BAN_postcode))
+      outputData.writerow((*row, lat, lon, BAN_adress, BAN_adress_full, BAN_city, BAN_postcode, BAN_depcode))
       rows_geocoded += 1
     except Exception as inst:
       print(inst)
-      outputData.writerow((*row, '', '', '', '', '', ''))
+      outputData.writerow((*row, '', '', '', '', '', '', ''))
       errors += 1
     counter += 1
 

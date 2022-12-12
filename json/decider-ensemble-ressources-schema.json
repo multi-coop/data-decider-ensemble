@@ -7,7 +7,19 @@
       "type": "string"
     },
     {
+      "name": "CODE PORTEUR DE PROJET",
+      "title": "Type de porteur",
+      "description": "Type de porteur",
+      "type": "string"
+    },
+    {
       "name": "FILTRE 2 - TYPE DE DEMARCHE",
+      "title": "Type de démarche",
+      "description": "Type de démarche",
+      "type": "string"
+    },
+    {
+      "name": "CODE DEMARCHE",
       "title": "Type de démarche",
       "description": "Type de démarche",
       "type": "string"
@@ -15,7 +27,13 @@
     {
       "name": "FILTRE 3 - THÉMATIQUE PRINCIPALE",
       "title": "Type de thématique",
-      "description": "Type de démarche",
+      "description": "Type de thématique",
+      "type": "string"
+    },
+    {
+      "name": "CODE THEMATIQUE",
+      "title": "Type de thématique",
+      "description": "Type de thématique",
       "type": "string"
     },
     {

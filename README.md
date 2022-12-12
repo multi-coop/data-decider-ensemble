@@ -95,7 +95,7 @@ Files will be locally served on :
 
 | | url |
 | :-: | :-: |
-| **Décider Ensemble** | https://rhinocc.fr |
+| **Décider Ensemble** | https://www.deciderensemble.com |
 | **coopérative numérique multi** | https://multi.coop |
 
 ---

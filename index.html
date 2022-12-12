@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="https://gitlab.com/multi-coop/datami/-/raw/main/public/logo-DATAMI-favicon.ico">
-  <title>PING / tiers lieux</title>
+  <title>Ressources Décider ensemble</title>
 </head>
 
 <body style="background-color: white; padding: 1em;">
@@ -33,8 +33,8 @@
             "title": "Données Décider ensemble",
             "activate": true,
             "localdev": true,
-            "gitfilelocal": "http://localhost:8805/statics/csv/geocoding/geocoded.csv",
-            "gitfile": "https://github.com/multi-coop/data-decider-ensemble/blob/main/csv/geocoding/geocoded.csv",
+            "gitfilelocal": "http://localhost:8805/statics/csv/geocoding/decider-ensemble-ressources-geocoded.csv",
+            "gitfile": "https://github.com/multi-coop/data-decider-ensemble/blob/main/csv/geocoding/decider-ensemble-ressources-geocoded.csv",
             "default-tab": true,
             "options": {
               "height": "800px",
@@ -44,15 +44,15 @@
                 "activate": true,
                 "filterfields": [
                   {
-                    "name": "FILTRE 1 - TYPE DE PORTEUR DE PROJET",
+                    "name": "CODE PORTEUR DE PROJET",
                     "filtering": "OR"
                   },
                   {
-                    "name": "FILTRE 2 - TYPE DE DEMARCHE",
+                    "name": "CODE DEMARCHE",
                     "filtering": "OR"
                   },
                   {
-                    "name": "FILTRE 3 - THÉMATIQUE PRINCIPALE",
+                    "name": "CODE THEMATIQUE",
                     "filtering": "OR"
                   }
                 ]
@@ -145,21 +145,6 @@
                       },
                       {
                         "text": {
-                          "fr": "Cette commune représente une population de {{ pop_insee }} habitants."
-                        }
-                      },
-                      {
-                        "text": {
-                          "fr": "{{ nom }} publie sur {{ merge }} avec une plateforme de type {{ platform_clean }}."
-                        }
-                      },
-                      {
-                        "text": {
-                          "fr": "Cette organisation a publié {{ nb_ptf }} jeux de données sur sa plateforme et {{ nb_datagouv }} jeux sur data.gouv.fr."
-                        }
-                      },
-                      {
-                        "text": {
                           "fr": "Plus d‘infos en cliquant sur ici : ~~ url_ptf ~~"
                         }
                       }
@@ -212,8 +197,18 @@
             "usertoken": ""
           },
           {
-            "title": "Schéma des données",
+            "title": "Introduction",
             "activate": true,
+            "default-tab": false,
+            "localdev": true,
+            "gitfilelocal": "http://localhost:8805/statics/markdown/decider-ensemble-intro.md",
+            "gitfile": "https://github.com/multi-coop/data-decider-ensemble/blob/main/markdown/decider-ensemble-intro.md",
+            "onlypreview": true,
+            "usertoken": ""
+          },
+          {
+            "title": "Schéma des données",
+            "activate": false,
             "default-tab": false,
             "localdev": true,
             "gitfilelocal": "http://localhost:8805/statics/json/decider-ensemble-ressources-schema.json",
