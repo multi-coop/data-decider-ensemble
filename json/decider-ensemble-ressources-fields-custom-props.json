@@ -8,17 +8,28 @@
     {
       "name": "PORTEUR DE PROJET - EXTENSIF",
       "subtype": "longtext",
-      "maxLength": 50
+      "maxLength": 75,
+      "longtextOptions": {
+        "breakSeparator": "//"
+      }
     },
     {
       "name": "À RETENIR",
       "subtype": "longtext",
-      "maxLength": 50
+      "maxLength": 150,
+      "longtextOptions": {
+        "breakSeparator": "//",
+        "bulletSeparator": "- "
+      }
     },
     {
       "name": "PRÉSENTATION DU PROJET",
       "subtype": "longtext",
-      "maxLength": 50
+      "maxLength": 250,
+      "longtextOptions": {
+        "breakSeparator": "//",
+        "bulletSeparator": "- "
+      }
     },
 
     {
@@ -61,11 +72,12 @@
 
     {
       "name": "SITE WEB",
+      "title": "Lien vers le site web du projet",
       "subtype": "link"
     },
     {
       "name": "LIEN PDF PROTEGE",
-      "title": "URL du logo du lieu",
+      "title": "URL du fichier pdf",
       "subtype": "link"
     },
 
@@ -74,7 +86,15 @@
       "subtype": "longtext",
       "maxLength": 20
     },
-
+    {
+      "name": "ÉTAPES",
+      "subtype": "timelinetext",
+      "stepOptions": {
+        "stepEnd": "Début du projet",
+        "stepSeparator": "//",
+        "stepTitleSeparator": "::"
+      }
+    },
     {
       "name": "latitude",
       "subtype": "geopoint"
