@@ -32,9 +32,10 @@
           {
             "title": "Données Décider ensemble",
             "activate": true,
-            "localdev": true,
+            "localdev": false,
             "gitfilelocal": "http://localhost:8805/statics/csv/geocoding/decider-ensemble-ressources-geocoded.csv",
-            "gitfile": "https://github.com/multi-coop/data-decider-ensemble/blob/main/csv/geocoding/decider-ensemble-ressources-geocoded.csv",
+            "gitfile": "https://github.com/multi-coop/data-decider-ensemble/blob/preprod/csv/geocoding/decider-ensemble-ressources-geocoded.csv",
+            "gitfile_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/csv/geocoding/decider-ensemble-ressources-geocoded.csv",
             "default-tab": true,
             "options": {
               "height": "800px",
@@ -58,13 +59,15 @@
                 ]
               },
               "schema": {
-                "localdev": true,
+                "localdev": false,
                 "filelocal": "http://localhost:8805/statics/json/decider-ensemble-ressources-schema.json",
+                "file_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-schema.json",
                 "file": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-schema.json"
               },
               "fields-custom-properties": {
-                "localdev": true,
+                "localdev": false,
                 "filelocal": "http://localhost:8805/statics/json/decider-ensemble-ressources-fields-custom-props.json",
+                "file_": "https://github.com/multi-coop/data-decider-ensemble/blob/preprod/json/decider-ensemble-ressources-fields-custom-props.json",
                 "file": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-fields-custom-props.json"
               },
               "cardsview": {
@@ -182,9 +185,10 @@
               "datavizview": {
                 "activate": true,
                 "default": false,
-                "localdev": true,
+                "localdev": false,
                 "filelocal": "http://localhost:8805/statics/json/decider-ensemble-ressources-dataviz-settings.json",
-                "file": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-dataviz-settings.json"
+                "file": "https://github.com/multi-coop/data-decider-ensemble/blob/preprod/json/decider-ensemble-ressources-dataviz-settings.json",
+                "file_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-dataviz-settings.json"
               },
               "mapview": {
                 "activate": true,
@@ -196,9 +200,10 @@
                     },
                     "height": 800,
                     "cols": 12,
-                    "localdev": true,
+                    "localdev": false,
                     "filelocal": "http://localhost:8805/statics/json/decider-ensemble-ressources-map-settings.json",
-                    "file": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-map-settings.json"
+                    "file": "https://github.com/multi-coop/data-decider-ensemble/blob/preprod/json/decider-ensemble-ressources-map-settings.json",
+                    "file_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-map-settings.json"
                   }
                 ]
               }
@@ -211,7 +216,8 @@
             "default-tab": false,
             "localdev": true,
             "gitfilelocal": "http://localhost:8805/statics/markdown/decider-ensemble-intro.md",
-            "gitfile": "https://github.com/multi-coop/data-decider-ensemble/blob/main/markdown/decider-ensemble-intro.md",
+            "gitfile": "https://github.com/multi-coop/data-decider-ensemble/blob/preprod/markdown/decider-ensemble-intro.md",
+            "gitfile_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/markdown/decider-ensemble-intro.md",
             "onlypreview": true,
             "usertoken": ""
           },
@@ -219,9 +225,10 @@
             "title": "Schéma des données",
             "activate": false,
             "default-tab": false,
-            "localdev": true,
+            "localdev": false,
             "gitfilelocal": "http://localhost:8805/statics/json/decider-ensemble-ressources-schema.json",
-            "gitfile": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-schema.json",
+            "gitfile": "https://github.com/multi-coop/data-decider-ensemble/blob/preprod/json/decider-ensemble-ressources-schema.json",
+            "gitfile_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-schema.json",
             "options": {
               "defaultDepth": 2,
               "allowKeyEdit": true
@@ -234,8 +241,9 @@
       />
 
       <!-- DATAMI WIDGET'S APP.JS SCRIPT -->
+      <!-- <script src="http://localhost:8080/js/app.js" type="text/javascript" defer></script> -->
       <!-- <script src="https://deploy-preview-27--datami-widget.netlify.app/js/app.js" type="text/javascript" defer></script> -->
-      <script src="http://localhost:8080/js/app.js" type="text/javascript" defer></script>
+      <script src="https://preprod--datami-widget.netlify.app/js/app.js" type="text/javascript" defer></script>
       <!-- <script src="https://datami-widget.multi.coop/js/app.js" type="text/javascript" defer></script> -->
 
     </div>
