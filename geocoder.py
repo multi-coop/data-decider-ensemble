@@ -3,6 +3,8 @@ import argparse
 import csv
 from geopy.geocoders import BANFrance
 
+### update 15/12/2022
+
 geocoder = BANFrance()
 
 parser = argparse.ArgumentParser(description="Geocode a csv dataset",
@@ -11,12 +13,15 @@ parser = argparse.ArgumentParser(description="Geocode a csv dataset",
 parser.add_argument("-v", "--verbose", action="store_true", help="increase verbosity")
 parser.add_argument("src", help="Path to source dataset to geocode")
 parser.add_argument("-out", help="Path to source dataset to geocode", default="csv/geocoding")
-parser.add_argument("-adress", "--col_adress", type=str, help="Column name of the line/item full adress", default='adresse_full')
+parser.add_argument("-adress", "--col_adress", type=str, help="Column name of the line/item full adress", default='')
+parser.add_argument("-cols_a", "--cols_adress", type=str, nargs="+", help="Column name of the line/item full adress", default='')
 parser.add_argument("-sep", "--separator", type=str, help="CSV separator",  default=',')
 parser.add_argument("-is_latlon", "--is_latitude_longitude", type=str, help="Existing Lat. and Lon. columns. If columns already exists keep the values from columnsand copy it into BAN_latitude and BAN_longitude", default=None)
 parser.add_argument("-debug", "--debug", type=bool, help="Debugging", default=False)
 
 args = parser.parse_args()
+
+### Get args
 
 debug = args.debug
 if debug: print("\nargs : ", args)
@@ -25,6 +30,8 @@ sep = args.separator
 
 col_adress = args.col_adress
 if debug: print("\n geocoder ... col_adress : ", col_adress)
+cols_adress = args.cols_adress
+if debug: print("\n geocoder ... cols_adress : ", cols_adress)
 
 cols_is_latlon = args.is_latitude_longitude.split(',') if args.is_latitude_longitude else None
 if debug: print("\n geocoder ... cols_is_latlon : ", cols_is_latlon)
@@ -33,6 +40,8 @@ if cols_is_latlon:
   col_lon = cols_is_latlon[1]
   if debug: print(" geocoder ... col_lat : ", col_lat)
   if debug: print(" geocoder ... col_lon : ", col_lon)
+
+### Create values for output file
 
 srcFilename = os.path.basename(args.src)
 if debug: print("\n geocoder ... srcFilename : ", srcFilename)
@@ -46,6 +55,8 @@ if debug: print("\n geocoder ... args.out : ", args.out)
 inputData = csv.reader(inputFile, delimiter=sep)
 outputData = csv.writer(outputFile, delimiter=sep, lineterminator='\n')
 
+### Count lines for debugging
+
 total_rows = 0
 with open(args.src) as f:
   total_rows = sum(1 for line in f)
@@ -56,9 +67,23 @@ for row in inputData:
   if debug: print("\n geocoder ... row : ", row)
   
   # Get index of adress column
-  col_adress_idx = row.index(col_adress)
-  if debug: print("\n geocoder ... col_adress_idx : ", col_adress_idx)
-  
+  if col_adress :
+    try :
+      col_adress_idx = row.index(col_adress)
+      if debug: print("\n geocoder ... col_adress_idx : ", col_adress_idx)
+    except : 
+      print("\n geocoder ... col_adress_idx > idx can't be found for col_adress: ", col_adress)
+
+  elif cols_adress :
+    cols_adress_idx = []
+    for col in cols_adress :
+      try :
+        cols_adress_idx.append(row.index(col))
+        if debug: print("\n geocoder ... cols_adress > row.index(col) : ", row.index(col))
+      except : 
+        print("\n geocoder ... cols_adress > idx can't be found for col: ", col)
+    if debug: print("\n geocoder ... cols_adress > cols_adress_idx : ", cols_adress_idx)
+
   if cols_is_latlon:
     col_lat_idx = row.index(col_lat)
     col_lon_idx = row.index(col_lon)
@@ -91,8 +116,15 @@ try:
     print(f'\n... geocoding row : {counter} / {total_rows}')
     # if debug: print("row : \n", row)
 
-    adress = row[col_adress_idx]
-    if debug: print("... adress : ", adress)
+    if col_adress :
+      adress = row[col_adress_idx]
+      if debug: print("... adress : ", adress)
+    elif cols_adress :
+      adress_concac = '' 
+      for col_i in cols_adress_idx :
+        a = row[col_i]
+        adress_concac = f'{adress_concac} {a}'
+      if debug: print("... adress_concac : ", adress_concac)
 
     if cols_is_latlon:
       row_lat = row[col_lat_idx]
@@ -104,7 +136,11 @@ try:
     if debug: print("... row_lon : ", row_lon)
 
     try:
-      location = geocoder.geocode(adress, exactly_one=True, timeout=30)
+      if col_adress :
+        location = geocoder.geocode(adress, exactly_one=True, timeout=30)
+      elif cols_adress :
+        location = geocoder.geocode(adress_concac, exactly_one=True, timeout=30)
+      
       if debug: print("... location : ", location)
       if debug: print("... location.latitude : ", location.latitude)
       if debug: print("... location.longitude : ", location.longitude)

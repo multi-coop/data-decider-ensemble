@@ -72,9 +72,9 @@
         "is_source_distant"   : false,
         "is_clickable"        : true,
 
-        "circle_color"     : "#e5ecf4",
-        "circle_color_100" : "#b2c6de",
-        "circle_color_250" : "#668ebe",
+        "circle_color"     : "#3269a9",
+        "circle_color_100" : "#3269a9",
+        "circle_color_250" : "#3269a9",
         "circle_color_500" : "#3269a9",
         "circle_color_750" : "#004494",
 
