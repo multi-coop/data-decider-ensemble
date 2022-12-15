@@ -16,9 +16,7 @@ La solution proposée et réalisée ici s'appuie sur un projet open source port�
 
 ## Démo
 
-- Page html de démo : 
-- url de démo :
-  - DEMO / données Décider ensemble : https://demo-decider-ensemble.netlify.app/
+- Page html de démo : https://datami-demo-decider-ensemble.netlify.app
 
 ---
 
@@ -66,7 +64,7 @@ or
 sh run_geocoding.sh
 ```
 
-The output geocoded file will be generated at `csv/geocoding/geocoded.csv`
+The output geocoded file will be generated in the folder `./csv/geocoding/`
 
 ---
 
