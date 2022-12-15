@@ -6,22 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <link rel="icon" href="https://gitlab.com/multi-coop/datami/-/raw/main/public/logo-DATAMI-favicon.ico">
-  <title>PING / tiers lieux</title>
+  <title>Ressources Décider ensemble</title>
 </head>
 
-<body style="background-color: #D7D7D7; padding: 1em;">
+<body style="background-color: white; padding: 1em;">
   <noscript>
     <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
       Please enable it to continue.</strong>
   </noscript>
-
-  <h2 id="title-demo" class="pt-6 title is-flex is-align-items-center is-justify-content-center has-text-white">
-    <p>
-      <a href="https://gitlab.com/multi-coop/datami" target="_blank">
-        <img src="https://gitlab.com/multi-coop/datami/-/raw/main/public/logo_DATAMI_title.png" alt="logo datami" style="height: 50px !important; width: auto !important">
-      </a>
-    </p>
-  </h2>
   
   <div class="container has-text-dark">
 
@@ -40,8 +32,10 @@
           {
             "title": "Données Décider ensemble",
             "activate": true,
-            "gitfile": "http://localhost:8805/statics/csv/geocoding/geocoded.csv",
-            "gitfile_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/csv/geocoding/geocoded.csv",
+            "localdev": false,
+            "gitfilelocal": "http://localhost:8805/statics/csv/geocoding/decider-ensemble-ressources-geocoded.csv",
+            "gitfile": "https://github.com/multi-coop/data-decider-ensemble/blob/preprod/csv/geocoding/decider-ensemble-ressources-geocoded.csv",
+            "gitfile_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/csv/geocoding/decider-ensemble-ressources-geocoded.csv",
             "default-tab": true,
             "options": {
               "height": "800px",
@@ -51,26 +45,30 @@
                 "activate": true,
                 "filterfields": [
                   {
-                    "name": "FILTRE 1 - TYPE DE PORTEUR DE PROJET",
+                    "name": "CODE PORTEUR DE PROJET",
                     "filtering": "OR"
                   },
                   {
-                    "name": "FILTRE 2 - TYPE DE DEMARCHE",
+                    "name": "CODE DEMARCHE",
                     "filtering": "OR"
                   },
                   {
-                    "name": "FILTRE 3 - THÉMATIQUE PRINCIPALE",
+                    "name": "CODE THEMATIQUE",
                     "filtering": "OR"
                   }
                 ]
               },
               "schema": {
-                "file": "http://localhost:8805/statics/json/decider-ensemble-ressources-schema.json",
-                "file_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-schema.json"
+                "localdev": false,
+                "filelocal": "http://localhost:8805/statics/json/decider-ensemble-ressources-schema.json",
+                "file_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-schema.json",
+                "file": "https://github.com/multi-coop/data-decider-ensemble/blob/preprod/json/decider-ensemble-ressources-schema.json"
               },
               "fields-custom-properties": {
-                "file": "http://localhost:8805/statics/json/decider-ensemble-ressources-fields-custom-props.json",
-                "file_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-fields-custom-props.json"
+                "localdev": false,
+                "filelocal": "http://localhost:8805/statics/json/decider-ensemble-ressources-fields-custom-props.json",
+                "file_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-fields-custom-props.json",
+                "file": "https://github.com/multi-coop/data-decider-ensemble/blob/preprod/json/decider-ensemble-ressources-fields-custom-props.json"
               },
               "cardsview": {
                 "activate": true,
@@ -90,6 +88,10 @@
                   },
                   "adresse_postale": {
                     "position": "adress"
+                  },
+                  "CODE THEMATIQUE": {
+                    "position": "tags",
+                    "block_title": "Thématique"
                   },
                   "PRÉSENTATION DU PROJET": {
                     "position": "resume"
@@ -112,17 +114,17 @@
                     "position": "description",
                     "block_title": "Description"
                   },
-                  "FILTRE 1 - TYPE DE PORTEUR DE PROJET": {
+                  "CODE PORTEUR DE PROJET": {
                     "position": "tags",
                     "block_title": "Type de porteur",
                     "right": true
                   },
-                  "FILTRE 2 - TYPE DE DEMARCHE": {
+                  "CODE DEMARCHE": {
                     "position": "tags",
                     "block_title": "Type de démarche",
                     "right": true
                   },
-                  "FILTRE 3 - THÉMATIQUE PRINCIPALE": {
+                  "CODE THEMATIQUE": {
                     "position": "tags",
                     "block_title": "Type de thématique",
                     "right": true
@@ -130,6 +132,16 @@
                   "SITE WEB": {
                     "position": "links",
                     "block_title": "Lien vers le site du projet",
+                    "right": false
+                  },
+                  "LIEN PDF PROTEGE": {
+                    "position": "links",
+                    "block_title": "Lien vers le pdf",
+                    "right": false
+                  },
+                  "ÉTAPES": {
+                    "position": "timeline",
+                    "block_title": "Déroulé",
                     "right": true
                   }
                 },
@@ -141,21 +153,6 @@
                       {
                         "text": {
                           "fr": "L‘organisation {{ nom }} est une {{ type }} et se situe dans le département {{ depcode }} ({{ dep_label }}) en région {{ reg_code_short }}."
-                        }
-                      },
-                      {
-                        "text": {
-                          "fr": "Cette commune représente une population de {{ pop_insee }} habitants."
-                        }
-                      },
-                      {
-                        "text": {
-                          "fr": "{{ nom }} publie sur {{ merge }} avec une plateforme de type {{ platform_clean }}."
-                        }
-                      },
-                      {
-                        "text": {
-                          "fr": "Cette organisation a publié {{ nb_ptf }} jeux de données sur sa plateforme et {{ nb_datagouv }} jeux sur data.gouv.fr."
                         }
                       },
                       {
@@ -174,8 +171,8 @@
                     "maxZoom": 18,
                     "minZoom": 2,
                     "item_geo_fields": {
-                      "latitude": "latitude",
-                      "longitude": "longitude"
+                      "latitude": "BAN_latitude",
+                      "longitude": "BAN_longitude"
                     },
                     "zoom_item": 13,
                     "marker_icon": "map-marker",
@@ -188,7 +185,9 @@
               "datavizview": {
                 "activate": true,
                 "default": false,
-                "file": "http://localhost:8805/statics/json/decider-ensemble-ressources-dataviz-settings.json",
+                "localdev": false,
+                "filelocal": "http://localhost:8805/statics/json/decider-ensemble-ressources-dataviz-settings.json",
+                "file": "https://github.com/multi-coop/data-decider-ensemble/blob/preprod/json/decider-ensemble-ressources-dataviz-settings.json",
                 "file_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-dataviz-settings.json"
               },
               "mapview": {
@@ -201,7 +200,9 @@
                     },
                     "height": 800,
                     "cols": 12,
-                    "file": "http://localhost:8805/statics/json/decider-ensemble-ressources-map-settings.json",
+                    "localdev": false,
+                    "filelocal": "http://localhost:8805/statics/json/decider-ensemble-ressources-map-settings.json",
+                    "file": "https://github.com/multi-coop/data-decider-ensemble/blob/preprod/json/decider-ensemble-ressources-map-settings.json",
                     "file_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-map-settings.json"
                   }
                 ]
@@ -210,10 +211,23 @@
             "usertoken": ""
           },
           {
-            "title": "Schéma des données",
+            "title": "Introduction",
             "activate": true,
             "default-tab": false,
-            "gitfile": "http://localhost:8805/statics/json/decider-ensemble-ressources-schema.json",
+            "localdev": false,
+            "gitfilelocal": "http://localhost:8805/statics/markdown/decider-ensemble-intro.md",
+            "gitfile": "https://github.com/multi-coop/data-decider-ensemble/blob/preprod/markdown/decider-ensemble-intro.md",
+            "gitfile_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/markdown/decider-ensemble-intro.md",
+            "onlypreview": true,
+            "usertoken": ""
+          },
+          {
+            "title": "Schéma des données",
+            "activate": false,
+            "default-tab": false,
+            "localdev": false,
+            "gitfilelocal": "http://localhost:8805/statics/json/decider-ensemble-ressources-schema.json",
+            "gitfile": "https://github.com/multi-coop/data-decider-ensemble/blob/preprod/json/decider-ensemble-ressources-schema.json",
             "gitfile_": "https://github.com/multi-coop/data-decider-ensemble/blob/main/json/decider-ensemble-ressources-schema.json",
             "options": {
               "defaultDepth": 2,
@@ -227,12 +241,22 @@
       />
 
       <!-- DATAMI WIDGET'S APP.JS SCRIPT -->
-      <script src="https://datami-widget.multi.coop/js/app.js" type="text/javascript" defer></script>
       <!-- <script src="http://localhost:8080/js/app.js" type="text/javascript" defer></script> -->
+      <!-- <script src="https://deploy-preview-27--datami-widget.netlify.app/js/app.js" type="text/javascript" defer></script> -->
+      <!-- <script src="https://preprod--datami-widget.netlify.app/js/app.js" type="text/javascript" defer></script> -->
+      <script src="https://datami-widget.multi.coop/js/app.js" type="text/javascript" defer></script>
 
     </div>
 
-    <div class="content my-6 px-6">
+    <h2 id="title-demo" class="pt-6 title is-flex is-align-items-center is-justify-content-center has-text-white">
+      <p>
+        <a href="https://datami.multi.coop" target="_blank">
+          <img src="https://gitlab.com/multi-coop/datami/-/raw/main/public/logo_DATAMI_title.png" alt="logo datami" style="height: 50px !important; width: auto !important">
+        </a>
+      </p>
+    </h2>
+
+    <!-- <div class="content my-6 px-6">
       <p class="is-size-6">
         L'import du widget <code>Datami</code> dans une page html permet d'afficher sur un site tiers des données hébergées sur github, gitlab ou dans un wiki.
       </p>
@@ -268,7 +292,7 @@
           </li>
         </ul>
       </p>
-    </div>
+    </div> -->
 
     <p id="page-credits" class="mt-6 has-text-centered has-text-white">
       Un projet numérique en partenariat avec

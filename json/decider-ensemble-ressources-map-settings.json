@@ -11,8 +11,8 @@
     "useMarkerCluster" : true,
 
     "item_geo_fields"   : {
-      "latitude" : "latitude",
-      "longitude": "longitude"
+      "latitude" : "BAN_latitude",
+      "longitude": "BAN_longitude"
     },
 
     "item_marker"       : "map-marker",
@@ -72,9 +72,9 @@
         "is_source_distant"   : false,
         "is_clickable"        : true,
 
-        "circle_color"     : "#e5ecf4",
-        "circle_color_100" : "#b2c6de",
-        "circle_color_250" : "#668ebe",
+        "circle_color"     : "#3269a9",
+        "circle_color_100" : "#3269a9",
+        "circle_color_250" : "#3269a9",
         "circle_color_500" : "#3269a9",
         "circle_color_750" : "#004494",
 
@@ -147,7 +147,7 @@
 
             "need_aggregation" : true,
             "polygon_prop_id" : "code",
-            "join_polygon_id_to_field"  : "CODE_POSTAL",
+            "join_polygon_id_to_field"  : "BAN_depcode",
             "agregated_data_field"      : "count_dep",
             "fill_color": [
               "interpolate",

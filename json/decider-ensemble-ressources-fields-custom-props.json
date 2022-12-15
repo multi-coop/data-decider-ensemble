@@ -8,17 +8,28 @@
     {
       "name": "PORTEUR DE PROJET - EXTENSIF",
       "subtype": "longtext",
-      "maxLength": 50
+      "maxLength": 75,
+      "longtextOptions": {
+        "breakSeparator": "//"
+      }
     },
     {
       "name": "À RETENIR",
       "subtype": "longtext",
-      "maxLength": 50
+      "maxLength": 150,
+      "longtextOptions": {
+        "breakSeparator": "//",
+        "bulletSeparator": "- "
+      }
     },
     {
       "name": "PRÉSENTATION DU PROJET",
       "subtype": "longtext",
-      "maxLength": 50
+      "maxLength": 250,
+      "longtextOptions": {
+        "breakSeparator": "//",
+        "bulletSeparator": "- "
+      }
     },
 
     {
@@ -28,44 +39,145 @@
 
     {
       "name": "FILTRE 1 - TYPE DE PORTEUR DE PROJET",
+      "hide": true,
       "subtype": "tags",
       "separator": "-"
     },
     {
       "name": "CODE PORTEUR DE PROJET",
       "subtype": "tags",
-      "separator": "-"
+      "separator": "-",
+      "bgColor" : "#f6c131",
+      "definitions": [
+        {
+          "value": "AC",
+          "label": "Association ou collectif citoyen"
+        },
+        {
+          "value": "AE",
+          "label" : "Administration d'Etat"
+        },
+        {
+          "value": "AUT",
+          "label": "Autre"
+        },
+        {
+          "value": "DEP",
+          "label" : "Département"
+        },
+        {
+          "value": "ENT",
+          "label" : "Entreprise"
+        },
+        {
+          "value": "GV",
+          "label" : "Grnade ville, communauté urbaine, métropole"
+        },
+        {
+          "value": "PV",
+          "label" : "Petite vile ou EPCI (moins de 20 000 hab.)"
+        },
+        {
+          "value": "RG",
+          "label" : "Région"
+        },
+        {
+          "value": "VM",
+          "label" : "Ville moyenne ou EPCI (20 000 à 100 000 hab.)"
+        }
+      ]
     },
 
     {
       "name": "FILTRE 2 - TYPE DE DEMARCHE",
+      "hide": true,
       "subtype": "tags",
       "separator": "-"
     },
     {
       "name": "CODE DEMARCHE",
       "subtype": "tags",
-      "separator": "-"
+      "separator": "-",
+      "bgColor" : "#1a3a68",
+      "definitions": [
+        {
+          "value": "AU",
+          "label": "Autre"
+        },
+        {
+          "value": "BP",
+          "label": "Budget et financement participatif"
+        },
+        {
+          "value": "DPP",
+          "label": "Dialogue parties prenantes"
+        },
+        {
+          "value": "DC",
+          "label": "Dispositif de consultation"
+        },
+        {
+          "value": "IP",
+          "label": "Instance de participation"
+        },
+        {
+          "value": "PN",
+          "label": "Participation en ligne "
+        },
+        {
+          "value": "IIC",
+          "label" : "Interpellation et initiatives citoyennes"
+        }
+      ]
     },
 
     {
       "name": "FILTRE 3 - THÉMATIQUE PRINCIPALE",
+      "hide": true,
       "subtype": "tags",
       "separator": "-"
     },
     {
       "name": "CODE THEMATIQUE",
       "subtype": "tags",
-      "separator": "-"
+      "separator": "-",
+      "bgColor" : "#129461",
+      "definitions": [
+        {
+          "value": "ACT",
+          "label": "Action sociale et inclusion"
+        },
+        {
+          "value": "JEU",
+          "label": "Jeunesse, Education et Culture"
+        },
+        {
+          "value": "ENV",
+          "label": "Environnement"
+        },
+        {
+          "value": "SAN",
+          "label": "Santé"
+        },
+        {
+          "value": "URB",
+          "label": "Urbanisme et aménagement"
+        },
+        {
+          "value": "MTH",
+          "label" : "Multithématique"
+        }
+      ]
     },
 
     {
       "name": "SITE WEB",
+      "title": "Lien vers le site web du projet",
       "subtype": "link"
     },
     {
       "name": "LIEN PDF PROTEGE",
-      "title": "URL du logo du lieu",
+      "title": "URL du fichier pdf",
       "subtype": "link"
     },
 
@@ -74,13 +186,21 @@
       "subtype": "longtext",
       "maxLength": 20
     },
-
     {
-      "name": "latitude",
+      "name": "ÉTAPES",
+      "subtype": "timelinetext",
+      "stepOptions": {
+        "stepEnd": "Début du projet",
+        "stepSeparator": "//",
+        "stepTitleSeparator": "::"
+      }
+    },
+    {
+      "name": "BAN_latitude",
       "subtype": "geopoint"
     },
     {
-      "name": "longitude",
+      "name": "BAN_longitude",
       "subtype": "geopoint"
     }
   ],
