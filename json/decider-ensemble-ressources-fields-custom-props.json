@@ -215,11 +215,11 @@
       "results_fields": [
         { 
           "resp_field" : "latitude",
-          "map_to_field": "Latitude"
+          "map_to_field": "BAN_latitude"
         },
         { 
           "resp_field" : "longitude",
-          "map_to_field": "Longitude"
+          "map_to_field": "BAN_longitude"
         }
       ]
     }
