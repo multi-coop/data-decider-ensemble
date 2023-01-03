@@ -211,14 +211,14 @@
         { "name": "adresse_postale" }
       ],
       "activate": true,
-      "api": "api-ban",
+      "api": "https://api-adresse.data.gouv.fr/search/?q={{adresse_postale}}",
       "results_fields": [
         { 
-          "resp_field" : "latitude",
+          "resp_field" : "features.0.geometry.coordinates.1",
           "map_to_field": "BAN_latitude"
         },
         { 
-          "resp_field" : "longitude",
+          "resp_field" : "features.0.geometry.coordinates.0",
           "map_to_field": "BAN_longitude"
         }
       ]
